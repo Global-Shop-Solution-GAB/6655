@@ -1,0 +1,145 @@
+﻿Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sFile.Declare
+v.Local.sSW.Declare
+v.Local.sJS.Declare
+v.Local.sJob.Declare
+v.Local.sSuf.Declare
+v.Local.sRet.Declare
+v.Local.sSQL.Declare
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+f.Intrinsic.Control.Try
+	'Hooks
+	f.Intrinsic.Control.SelectCase(v.Caller.Hook)
+		'PO Line Populate
+		f.Intrinsic.Control.Case("17050")
+			Variable.Passed.000097.Set("PO Packer")
+		'PO Line Script 1
+		f.Intrinsic.Control.Case("17160")
+			'Get Variables.
+			v.Local.sPO.Set(Variable.Passed.008002)
+			v.Local.sPOLine.Set(Variable.Passed.008001)
+			'Call PO Packer
+			f.Intrinsic.String.Build("{0}$!${1}", v.Local.sPO, v.Local.sPOLine, v.Local.sSW)
+			f.Intrinsic.String.Build("{0}\GCG_6655_Packing_Screen.g2u", v.Caller.GasDir, v.Local.sFile)
+			f.Global.General.CallSyncGAS(v.Local.sFile, v.Local.sSW)
+		'SFDC Net Populate	
+		f.Intrinsic.Control.Case("49710")
+			Variable.Passed.MainFormView-windowsUIButtonPanel-1.Set("Script 3|~|Inv Label|~|PO Packer")
+			
+		'SFDC Net Script 1
+		f.Intrinsic.Control.Case("49760")
+			f.Intrinsic.String.Replace(Variable.Passed.MainFormView-WorkOrder, "Work Order ", "", v.Local.sJS)
+			'Check Length of WO.
+			f.Intrinsic.Control.If(v.Local.sJS.Length, >, 6)
+				'Split WO and Suffix
+				f.Intrinsic.String.Split(v.Local.sJS, "-", v.Local.sJS)
+				'Get PO Lines from Custom Table
+				f.ODBC.Connection!con.OpenCompanyConnection
+					f.Intrinsic.String.Build("Select * from GCG_6655_PO_JOB where Job = '{0}' and Suffix = '{1}'", v.Local.sJS(0), v.Local.sJS(1), v.Local.sSQL)
+					f.Data.Datatable.CreateFromSQL("poDT", "con", v.Local.sSQL)
+				f.ODBC.Connection!con.Close
+					'Check Lines
+					f.Intrinsic.Control.If(v.DataTable.poDT.RowCount, =, 1)
+						'Call PO Packer
+						f.Intrinsic.String.Build("{0}$!${1}", v.DataTable.poDT(0).PO_Number!FieldValTrim, v.DataTable.poDT(0).PO_Line!FieldValTrim, v.Local.sSW)
+						f.Intrinsic.String.Build("{0}\GCG_6655_Packing_Screen.g2u", v.Caller.GasDir, v.Local.sFile)
+						'f.ODBC.Connection!con.Close
+						f.Global.General.CallSyncGAS(v.Local.sFile, v.Local.sSW)
+					f.Intrinsic.Control.ElseIf(v.DataTable.poDT.RowCount, =, 0)
+						'Error Message
+						f.Intrinsic.UI.Msgbox("No Po found.")
+					f.Intrinsic.Control.ElseIf(v.DataTable.poDT.RowCount, >, 1)
+						'Browser
+						f.Intrinsic.UI.Browser("PO Lines", "con", v.Local.sSQL, "Job*!*Suffix*!*PO*!*Line", "60*!*30*!*70*!*40", v.Local.sRet)
+						f.Intrinsic.Control.If(v.Local.sRet.Trim, <>, "***CANCEL***")
+							'Split
+							f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+							'Call PO Packer
+							f.Intrinsic.String.Build("{0}$!${1}", v.Local.sRet(2), v.Local.sRet(3), v.Local.sSW)
+							f.Intrinsic.String.Build("{0}\GCG_6655_Packing_Screen.g2u", v.Caller.GasDir, v.Local.sFile)
+							'f.ODBC.Connection!con.Close
+							f.Global.General.CallSyncGAS(v.Local.sFile, v.Local.sSW)
+						f.Intrinsic.Control.EndIf
+					f.Intrinsic.Control.EndIf
+				
+			f.Intrinsic.Control.Else
+				'Error Message
+				f.Intrinsic.UI.Msgbox("No Po found.")
+			f.Intrinsic.Control.EndIf
+		'GUI Populate	
+		f.Intrinsic.Control.Case("15710")
+			v.Passed.000016.Set("PO Packer")
+		'Gui Script 1
+		f.Intrinsic.Control.Case("15760")
+			v.Local.sJob.Set(Variable.Passed.009990)
+			v.Local.sSuf.Set(Variable.Passed.009991)
+			'Check Length of WO.
+			f.Intrinsic.Control.If(v.Local.sJob.Trim, <>, "")
+				'Check Out OP
+				f.ODBC.Connection!con.OpenCompanyConnection
+					f.Intrinsic.String.Build("Select * from V_JOB_OPERATIONS where Job = '{0}' and Suffix = '{1}' and LMO = 'O' and Seq < '90000'", v.Local.sJob, v.Local.sSuf, v.Local.sSQL)
+					f.Data.Datatable.CreateFromSQL("opDT", "con", v.Local.sSQL)					
+				f.ODBC.Connection!con.Close
+				f.Intrinsic.Control.If(v.DataTable.opDT.RowCount, =, 0)
+					f.Intrinsic.UI.Msgbox("Please select a WO with Outside Operations.")
+					f.Data.Datatable.Close("opDT")
+					f.Intrinsic.Control.ExitSub
+				f.Intrinsic.Control.EndIf
+				'Get PO Lines from Custom Table
+				f.ODBC.Connection!con.OpenCompanyConnection
+					f.Intrinsic.String.Build("Select * from GCG_6655_PO_JOB where Job = '{0}' and Suffix = '{1}'", v.Local.sJob, v.Local.sSuf, v.Local.sSQL)
+					f.Data.Datatable.CreateFromSQL("poDT", "con", v.Local.sSQL)
+				f.ODBC.Connection!con.Close
+				'Check Lines
+				f.Intrinsic.Control.If(v.DataTable.poDT.RowCount, =, 1)
+					'Call PO Packer
+					f.Intrinsic.String.Build("{0}$!${1}", v.DataTable.poDT(0).PO_Number!FieldValTrim, v.DataTable.poDT(0).PO_Line!FieldValTrim, v.Local.sSW)
+					f.Intrinsic.String.Build("{0}\GCG_6655_Packing_Screen.g2u", v.Caller.GasDir, v.Local.sFile)
+					'f.ODBC.Connection!con.Close
+					f.Global.General.CallSyncGAS(v.Local.sFile, v.Local.sSW)
+				f.Intrinsic.Control.ElseIf(v.DataTable.poDT.RowCount, =, 0)
+					'Error Message
+					f.Intrinsic.UI.Msgbox("No Po found.")
+				f.Intrinsic.Control.ElseIf(v.DataTable.poDT.RowCount, >, 1)
+					'Browser
+					f.ODBC.Connection!con.OpenCompanyConnection
+						f.Intrinsic.UI.Browser("PO Lines", "con", v.Local.sSQL, "Job*!*Suffix*!*PO*!*Line", "60*!*30*!*70*!*40", v.Local.sRet)
+					f.ODBC.Connection!con.Close
+					f.Intrinsic.Control.If(v.Local.sRet.Trim, <>, "***CANCEL***")
+						'Split
+						f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+						'Call PO Packer
+						f.Intrinsic.String.Build("{0}$!${1}", v.Local.sRet(2), v.Local.sRet(3), v.Local.sSW)
+						f.Intrinsic.String.Build("{0}\GCG_6655_Packing_Screen.g2u", v.Caller.GasDir, v.Local.sFile)
+						'f.ODBC.Connection!con.Close
+						f.Global.General.CallSyncGAS(v.Local.sFile, v.Local.sSW)
+					f.Intrinsic.Control.EndIf
+				f.Intrinsic.Control.EndIf
+				
+			f.Intrinsic.Control.Else
+				'Error Message
+				f.Intrinsic.UI.Msgbox("No Job Selected.")
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndSelect
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_6655_Hooks.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+Program.Sub.ErrorMsg.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$aanazco$}$20220603081128828$}$7aQAV3Tor/tR9bkuakHbuzQlHVuXCGOzX/9VFZT/pPI2yL66VMgdHwPnN0nV9rBNBEPDCwQ6wOc=
+Program.Sub.Comments.End
