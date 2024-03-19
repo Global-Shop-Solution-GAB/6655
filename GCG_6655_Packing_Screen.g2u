@@ -1,0 +1,1164 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(BaseForm)
+Gui.Form..Caption("Outside PO Packer")
+Gui.Form..Size(705,584)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.frame1.Create(Frame)
+Gui.Form.frame1.Enabled(True)
+Gui.Form.frame1.Visible(True)
+Gui.Form.frame1.Zorder(0)
+Gui.Form.frame1.Size(226,110)
+Gui.Form.frame1.Position(5,5)
+Gui.Form.frame1.Caption("PO Information")
+Gui.Form.frame1.FontName("Tahoma")
+Gui.Form.frame1.FontSize(8.25)
+Gui.Form.frame1.BorderStyle(1)
+Gui.Form.lbl1.Create(Label,"PO Number",True,54,13,0,5,30,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl1.BorderStyle(0)
+Gui.Form.lbl1.Parent("frame1")
+Gui.Form.lbl2.Create(Label,"PO Line",True,36,13,0,122,30,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl2.BorderStyle(0)
+Gui.Form.lbl2.Parent("frame1")
+Gui.Form.txtSqftRemaining.Create(TextBox,"",True,100,20,0,122,85,False,0,"Tahoma",8.25,,1)
+Gui.Form.txtSqftRemaining.Parent("frame1")
+Gui.Form.txtSqftRemaining.NumericOnly(2)
+Gui.Form.txtSqftOrdered.Create(TextBox,"",True,100,20,0,5,85,False,0,"Tahoma",8.25,,1)
+Gui.Form.txtSqftOrdered.Parent("frame1")
+Gui.Form.txtSqftOrdered.NumericOnly(2)
+Gui.Form.txtPoLine.Create(TextBox,"",True,40,20,0,122,45,False,0,"Tahoma",8.25,,1)
+Gui.Form.txtPoLine.Parent("frame1")
+Gui.Form.txtPoLine.Mask("000")
+Gui.Form.txtPoNumber.Create(TextBox,"",True,100,20,0,5,45,False,0,"Tahoma",8.25,,1)
+Gui.Form.txtPoNumber.Parent("frame1")
+Gui.Form.lbl4.Create(Label,"Sq Ft Remaining",True,77,13,0,122,70,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl4.BorderStyle(0)
+Gui.Form.lbl4.Parent("frame1")
+Gui.Form.lbl3.Create(Label,"Total Sq Ft Ordered",True,95,13,0,5,70,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl3.BorderStyle(0)
+Gui.Form.lbl3.Parent("frame1")
+Gui.Form.cmdPOBack.Create(Button)
+Gui.Form.cmdPOBack.Enabled(True)
+Gui.Form.cmdPOBack.Visible(True)
+Gui.Form.cmdPOBack.Zorder(0)
+Gui.Form.cmdPOBack.Size(24,24)
+Gui.Form.cmdPOBack.Position(167,43)
+Gui.Form.cmdPOBack.TabStop(True)
+Gui.Form.cmdPOBack.TabIndex(2)
+Gui.Form.cmdPOBack.Caption("<")
+Gui.Form.cmdPOBack.FontName("Tahoma")
+Gui.Form.cmdPOBack.FontSize(8.25)
+Gui.Form.cmdPOBack.Parent("frame1")
+Gui.Form.cmdPOBack.Event(Click,cmdPOBack_Click)
+Gui.Form.cmdPOForward.Create(Button)
+Gui.Form.cmdPOForward.Enabled(True)
+Gui.Form.cmdPOForward.Visible(True)
+Gui.Form.cmdPOForward.Zorder(0)
+Gui.Form.cmdPOForward.Size(24,24)
+Gui.Form.cmdPOForward.Position(195,43)
+Gui.Form.cmdPOForward.TabStop(True)
+Gui.Form.cmdPOForward.TabIndex(3)
+Gui.Form.cmdPOForward.Caption(">")
+Gui.Form.cmdPOForward.FontName("Tahoma")
+Gui.Form.cmdPOForward.FontSize(8.25)
+Gui.Form.cmdPOForward.Parent("frame1")
+Gui.Form.cmdPOForward.Event(Click,cmdPOForward_Click)
+Gui.Form.frame2.Create(Frame)
+Gui.Form.frame2.Enabled(True)
+Gui.Form.frame2.Visible(True)
+Gui.Form.frame2.Zorder(0)
+Gui.Form.frame2.Size(458,110)
+Gui.Form.frame2.Position(239,5)
+Gui.Form.frame2.Caption("PO Information")
+Gui.Form.frame2.FontName("Tahoma")
+Gui.Form.frame2.FontSize(8.25)
+Gui.Form.frame2.BorderStyle(1)
+Gui.Form.frame2.Anchor(13)
+Gui.Form.cmdDelete.Create(Button)
+Gui.Form.cmdDelete.Enabled(False)
+Gui.Form.cmdDelete.Visible(False)
+Gui.Form.cmdDelete.Zorder(0)
+Gui.Form.cmdDelete.Size(51,24)
+Gui.Form.cmdDelete.Position(78,79)
+Gui.Form.cmdDelete.Caption("")
+Gui.Form.cmdDelete.FontName("Tahoma")
+Gui.Form.cmdDelete.FontSize(8.25)
+Gui.Form.cmdDelete.Parent("frame2")
+Gui.Form.cmdDelete.SvgPicture("icon_delete_plain_color")
+Gui.Form.cmdDelete.ImageAlign(8)
+Gui.Form.cmdDelete.TabStop(True)
+Gui.Form.cmdDelete.TabIndex(7)
+Gui.Form.cmdDelete.Event(Click,cmdDelete_Click)
+Gui.Form.cmdSave.Create(Button)
+Gui.Form.cmdSave.Enabled(True)
+Gui.Form.cmdSave.Visible(True)
+Gui.Form.cmdSave.Zorder(0)
+Gui.Form.cmdSave.Size(51,24)
+Gui.Form.cmdSave.Position(9,78)
+Gui.Form.cmdSave.Caption("")
+Gui.Form.cmdSave.FontName("Tahoma")
+Gui.Form.cmdSave.FontSize(8.25)
+Gui.Form.cmdSave.Parent("frame2")
+Gui.Form.cmdSave.SvgPicture("icon_save_color")
+Gui.Form.cmdSave.ImageAlign(8)
+Gui.Form.cmdSave.Event(GotFocus,cmdSave_GotFocus)
+Gui.Form.cmdSave.TabStop(True)
+Gui.Form.cmdSave.TabIndex(6)
+Gui.Form.lbl5.Create(Label,"Box Number",True,58,13,0,5,30,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl5.BorderStyle(0)
+Gui.Form.lbl5.Parent("frame2")
+Gui.Form.cmdForward.Create(Button)
+Gui.Form.cmdForward.Enabled(True)
+Gui.Form.cmdForward.Visible(True)
+Gui.Form.cmdForward.Zorder(0)
+Gui.Form.cmdForward.Size(24,24)
+Gui.Form.cmdForward.Position(96,43)
+Gui.Form.cmdForward.Caption(">")
+Gui.Form.cmdForward.FontName("Tahoma")
+Gui.Form.cmdForward.FontSize(8.25)
+Gui.Form.cmdForward.Parent("frame2")
+Gui.Form.cmdForward.Event(Click,cmdForward_Click)
+Gui.Form.cmdForward.TabStop(True)
+Gui.Form.cmdForward.TabIndex(3)
+Gui.Form.cmdBack.Create(Button)
+Gui.Form.cmdBack.Enabled(True)
+Gui.Form.cmdBack.Visible(True)
+Gui.Form.cmdBack.Zorder(0)
+Gui.Form.cmdBack.Size(24,24)
+Gui.Form.cmdBack.Position(69,43)
+Gui.Form.cmdBack.Caption("<")
+Gui.Form.cmdBack.FontName("Tahoma")
+Gui.Form.cmdBack.FontSize(8.25)
+Gui.Form.cmdBack.Parent("frame2")
+Gui.Form.cmdBack.Event(Click,cmdBack_Click)
+Gui.Form.cmdBack.TabStop(True)
+Gui.Form.cmdBack.TabIndex(2)
+Gui.Form.txtPart.Create(TextBox,"",True,113,20,0,194,46,True,0,"Tahoma",8.25,,1)
+Gui.Form.txtPart.Parent("frame2")
+Gui.Form.txtPart.TabStop(True)
+Gui.Form.txtPart.TabIndex(5)
+Gui.Form.txtPart.MaxLength(20)
+Gui.Form.txtPart.Event(KeyPressEnter,txtPart_Change)
+Gui.Form.txtNumPcs.Create(TextBox,"1",True,58,20,0,130,46,True,2,"Tahoma",8.25,,1)
+Gui.Form.txtNumPcs.Parent("frame2")
+Gui.Form.txtNumPcs.NumericOnly(2)
+Gui.Form.txtNumPcs.TabStop(True)
+Gui.Form.txtNumPcs.TabIndex(4)
+Gui.Form.txtNumPcs.DefaultValue("")
+Gui.Form.txtBoxNo.Create(TextBox,"1",True,59,20,0,5,45,True,2,"Tahoma",8.25,,1)
+Gui.Form.txtBoxNo.Parent("frame2")
+Gui.Form.txtBoxNo.NumericOnly(2)
+Gui.Form.txtBoxNo.DefaultValue("1")
+Gui.Form.txtBoxNo.TabStop(True)
+Gui.Form.txtBoxNo.TabIndex(1)
+Gui.Form.lbl7.Create(Label,"Part",True,20,13,0,194,30,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl7.BorderStyle(0)
+Gui.Form.lbl7.Parent("frame2")
+Gui.Form.cmdEdit.Create(Button)
+Gui.Form.cmdEdit.Enabled(True)
+Gui.Form.cmdEdit.Visible(True)
+Gui.Form.cmdEdit.Zorder(0)
+Gui.Form.cmdEdit.Size(51,24)
+Gui.Form.cmdEdit.Position(154,78)
+Gui.Form.cmdEdit.Caption("")
+Gui.Form.cmdEdit.FontName("Tahoma")
+Gui.Form.cmdEdit.FontSize(8.25)
+Gui.Form.cmdEdit.Parent("frame2")
+Gui.Form.cmdEdit.SvgPicture("icon_edit_color")
+Gui.Form.cmdEdit.ImageAlign(8)
+Gui.Form.cmdEdit.TabStop(True)
+Gui.Form.cmdEdit.TabIndex(8)
+Gui.Form.cmdEdit.Event(Click,cmdEdit_Click)
+Gui.Form.cmdPrint.Create(Button)
+Gui.Form.cmdPrint.Enabled(True)
+Gui.Form.cmdPrint.Visible(True)
+Gui.Form.cmdPrint.Zorder(0)
+Gui.Form.cmdPrint.Size(51,24)
+Gui.Form.cmdPrint.Position(295,78)
+Gui.Form.cmdPrint.Caption("")
+Gui.Form.cmdPrint.FontName("Tahoma")
+Gui.Form.cmdPrint.FontSize(8.25)
+Gui.Form.cmdPrint.Parent("frame2")
+Gui.Form.cmdPrint.SvgPicture("icon_printer_color")
+Gui.Form.cmdPrint.ImageAlign(8)
+Gui.Form.cmdPrint.TabStop(True)
+Gui.Form.cmdPrint.TabIndex(9)
+Gui.Form.cmdPrint.Event(Click,cmdPrint_Click)
+Gui.Form.lbl6.Create(Label,"# Pieces",True,41,13,0,130,30,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl6.BorderStyle(0)
+Gui.Form.lbl6.Parent("frame2")
+Gui.Form.cmdPartBrw.Create(Button)
+Gui.Form.cmdPartBrw.Enabled(True)
+Gui.Form.cmdPartBrw.Visible(True)
+Gui.Form.cmdPartBrw.Zorder(0)
+Gui.Form.cmdPartBrw.Size(34,27)
+Gui.Form.cmdPartBrw.Position(313,42)
+Gui.Form.cmdPartBrw.TabStop(True)
+Gui.Form.cmdPartBrw.TabIndex(9)
+Gui.Form.cmdPartBrw.Caption("")
+Gui.Form.cmdPartBrw.FontName("Tahoma")
+Gui.Form.cmdPartBrw.FontSize(8.25)
+Gui.Form.cmdPartBrw.SvgPicture("icon_browser_color")
+Gui.Form.cmdPartBrw.ImageAlign(8)
+Gui.Form.cmdPartBrw.Parent("frame2")
+Gui.Form.cmdPartBrw.Event(Click,cmdPartBrw_Click)
+Gui.Form.GsGcDisplay.Create(GsGridControl)
+Gui.Form.GsGcDisplay.Enabled(True)
+Gui.Form.GsGcDisplay.Visible(True)
+Gui.Form.GsGcDisplay.Zorder(0)
+Gui.Form.GsGcDisplay.Size(695,428)
+Gui.Form.GsGcDisplay.Position(5,118)
+Gui.Form.GsGcDisplay.Anchor(15)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global.bEditMode.Declare
+v.Global.iQty.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+v.Local.sTmp.Declare
+f.ODBC.Connection!con.OpenCompanyConnection
+
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+f.Intrinsic.Control.CallSub(createDisplayDT)
+f.Intrinsic.Control.CallSub(loadGridProperties)
+f.Intrinsic.Control.CallSub(Deserialize)
+'Split Switches.
+f.Intrinsic.String.Split(v.Caller.Switches, "$!$", v.Local.sTmp)
+f.Intrinsic.Control.If(v.Local.sTmp.UBound, =, 1)
+	gui.Form.txtPoNumber.Text(v.Local.sTmp(0))
+	gui.Form.txtPoLine.Text(v.Local.sTmp(1))
+	'Load Screen.
+	f.Intrinsic.Control.CallSub(loadBoxes)
+f.Intrinsic.Control.EndIf
+gui.Form.txtPart.SetFocus
+gui.Form..Show
+gui.Form.txtPart.SetFocus
+Program.Sub.Main.End
+
+'Loading Subs
+Program.Sub.createDisplayDT.Start
+f.Intrinsic.Control.Try
+	f.Data.DataTable.Create("displayDT", true)
+	f.Data.DataTable.AddColumn("displayDT", "Part", "String")
+	f.Data.DataTable.AddColumn("displayDT", "BoxNum", "Long")
+	f.Data.DataTable.AddColumn("displayDT", "WOQty", "Float")
+	f.Data.DataTable.AddColumn("displayDT", "NumPcs", "Long")
+	f.Data.DataTable.AddColumn("displayDT", "PO_Number", "String")
+	f.Data.DataTable.AddColumn("displayDT", "PO_Line", "String", "    ")
+	f.Data.DataTable.AddExpressionColumn("displayDT", "PO_LineNew", "String", "SUBSTRING(PO_Line, 1, 3)")
+	f.Data.DataTable.AddColumn("displayDT", "Sqr_Ft", "Float")
+	
+	f.Data.DataView.Create("displayDT", "displayDV", 22)
+	f.Data.DataView.Create("displayDT", "maxBoxDV", 22, "", "BoxNum Desc")
+	gui.Form.GsGcDisplay.AddGridviewFromDataview("displayGV", "displayDT", "displayDV")
+	gui.Form.GsGcDisplay.MainView("displayGV")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.createDisplayDT.End
+
+Program.Sub.loadGridProperties.Start
+v.Local.iCnt.Declare
+v.Local.sFields.Declare
+v.Local.iVisibleIndex.Declare
+
+f.Intrinsic.Control.Try
+	f.Intrinsic.String.Split(v.DataTable.displayDT.FieldNames, "*!*", v.Local.sFields)
+	f.Intrinsic.Control.For(v.Local.iCnt, 0, v.Local.sFields.UBound, 1)
+	
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "HeaderFontBold", True)
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "Visible", True)
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "ReadOnly", True)
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "AllowEdit", False)
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "HeaderHAlignment", "Near")
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "CellHAlignment", "Near")
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "HeaderBackColor", v.Color.GSS)
+		gui.Form.GsGcDisplay.SetColumnProperty("displayGV", v.Local.sFields(v.Local.iCnt), "HeaderForeColor", v.Color.White)
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	'GridView Properties
+	gui.Form.GsGcDisplay.BestFitColumns("displayGV")
+	gui.Form.GsGcDisplay.SetGridviewProperty("displayGV", "OptionsViewColumnAutoWidth", False)
+	'gui.Form.GsGcDisplay.SetGridviewProperty("displayGV", "OptionsViewShowAutoFilterRow", True)
+	'gui.Form.GsGcDisplay.SetGridviewProperty("displayGV", "OptionsFindAlwaysVisible", True)
+	'gui.Form.GsGcDisplay.SetGridviewProperty("displayGV", "Showgrouppanel", True)
+	
+	'Possible Column Properties 
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Part", "AllowEdit", True)
+	'gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Default", "AllowEdit", True)
+	'gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Default", "HeaderHAlignment", "Center")
+	'gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Default", "CellHAlignment", "Center")
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Po_Number", "Caption", "Po Number")
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Po_Line", "Caption", "Po Line")
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "PO_LineNew", "Caption", "Po Line")
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Sqr_Ft", "Caption", "Square Feet")
+	
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Po_Line", "Visible", False)
+	gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Sqr_Ft", "DisplayCustomNumeric", "#.##")
+	
+	'VisibleIndex
+	'gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Default", "VisibleIndex", v.Local.iVisibleIndex)
+	'gui.Form.GsGcDisplay.SetColumnProperty("displayGV", "Default", "VisibleIndex", v.Local.iVisibleIndex.++)
+	
+	'Conditional Formatting
+	'gui.Form.GsGcDisplay.AddStyleFormatCondition("displayGV", "columnName", "TagName", "EQUAL", 1)
+	'gui.Form.GsGcDisplay.SetStyleFormatConditionProperty("displayGV", "columnName", "TagName", "ApplyToRow", True) 
+	'gui.Form.GsGcDisplay.SetStyleFormatConditionProperty("displayGV", "columnName", "TagName", "BackColor", "Color") 
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.loadGridProperties.End
+
+Program.Sub.Serialize.Start
+v.Local.sSerialize.Declare
+f.Intrinsic.Control.Try
+
+f.Intrinsic.Control.If(v.DataTable.uploadDT.Exists, =, False)
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+gui.Form.GsGcDisplay.Serialize("displayGV", v.Local.sSerialize)
+f.Global.Registry.AddValue(v.Caller.User, v.Caller.CompanyCode, "displayGV", 6655, 4000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, v.Local.sSerialize)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+v.Local.sSerialize.Declare
+f.Intrinsic.Control.Try
+	f.Global.Registry.ReadValue(v.Caller.User, v.Caller.CompanyCode, "displayGV", 6655, 0, 5, "", v.Local.sSerialize)
+	f.Intrinsic.Control.If(v.Local.sSerialize, <>, "")
+		f.ODBC.Connection!common.OpenCommonConnection
+			f.ODBC.Connection!common.Execute("delete from GS_REGISTRY where REG_ID = '6655'")
+		f.ODBC.Connection!common.Close
+	f.Intrinsic.Control.EndIf
+	
+	f.Global.Registry.ReadValue(v.Caller.User, v.Caller.CompanyCode, "displayGV", "6655", 4000, 6, "", v.Local.sSerialize)
+	f.Intrinsic.Control.If(v.Local.sSerialize.Trim, <>, "")
+		gui.Form.GsGcDisplay.Deserialize(v.Local.sSerialize)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.Try
+	'End Program.
+	f.Intrinsic.Control.CallSub(Serialize)
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.cmdBrwPO_Click.Start
+v.Local.sPO.Declare
+v.Local.sRet.Declare
+v.Local.sSQL.Declare
+f.Intrinsic.Control.Try
+	'Check if PO 
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	f.Intrinsic.Control.If(v.Local.sPO.Trim, <>, "")
+		f.Intrinsic.String.Build("and Purchase_Order = '{0}'", v.Local.sPO, v.Local.sSQL)
+	f.Intrinsic.Control.Else
+		v.Local.sSQL.Set("")
+	f.Intrinsic.Control.EndIf
+	'Browser
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+		f.Intrinsic.String.Build("Select Job, Suffix, Purchase_Order, Record_no, Part from V_PO_Lines where Job <> '' and Flag_Recv_close <> 'Y'", v.Local.sSQL, v.Local.sSQL)
+		f.Intrinsic.UI.Browser("PO Lines", "con", v.Local.sSQL, "Job*!*Suffix*!*PO*!*PO Line*!*Part", "70*!*40*!*70*!*40*!*120", v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet, <>, "***CANCEL***")
+			f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+			gui.Form.txtPoNumber.Text(v.Local.sRet(2))
+			gui.Form.txtPoLine.Text(v.Local.sRet(3))
+		'	gui.Form.txtPart.Text(v.Local.sRet(4))
+		f.Intrinsic.Control.EndIf
+	'f.ODBC.Connection!con.Close
+	'Load PO Info.
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdBrwPO_Click.End
+
+Program.Sub.cmdBack_Click.Start
+v.Local.iBoxNum.Declare
+v.Local.sTemp.Declare
+f.Intrinsic.Control.Try
+	'Get Box Num
+	v.Local.iBoxNum.Set(v.Screen.Form!txtBoxNo.Text)
+	'Check Min Number
+	f.Intrinsic.Control.If(v.Local.iBoxNum, <, 2)
+		gui.Form.txtBoxNo.Text("1")
+	f.Intrinsic.Control.Else
+		gui.Form.txtBoxNo.Text(v.Local.iBoxNum.--)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdBack_Click.End
+
+Program.Sub.cmdForward_Click.Start
+v.Local.sPO.Declare
+v.Local.iBoxNum.Declare
+v.Local.iMaxBoxNum.Declare
+f.Intrinsic.Control.Try
+	'Get Box Num
+	v.Local.iBoxNum.Set(v.Screen.Form!txtBoxNo.Text)
+	'Get Max Box Num
+	f.Intrinsic.Control.If(v.DataView.displayDT!maxBoxDV.RowCount, >, 0)
+		v.Local.iMaxBoxNum.Set(v.DataView.displayDT!maxBoxDV(0).BoxNum!FieldVal)
+	f.Intrinsic.Control.Else	
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	'Check Max Number
+	f.Intrinsic.Control.If(v.Local.iBoxNum, >, v.Local.iMaxBoxNum)
+		gui.Form.txtBoxNo.Text(v.Local.iBoxNum)
+	f.Intrinsic.Control.Else
+		gui.Form.txtBoxNo.Text(v.Local.iBoxNum.++)
+		gui.Form.txtNumPcs.Text("1")
+		gui.Form.txtNumPcs.Locked(True)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdForward_Click.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+
+'Generic Error message. 
+f.Intrinsic.String.Build("Project GCG_6655_Packing_Screen.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+Program.Sub.ErrorMsg.End
+
+Program.Sub.cmdSave_GotFocus.Start
+v.Local.sPart.Declare
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sJob.Declare
+v.Local.sSuffix.Declare
+v.Local.fJobQty.Declare
+v.Local.fNumPcs.Declare
+v.Local.fNumPcsTotal.Declare
+v.Local.fNumSQL.Declare
+v.Local.sSQL.Declare
+v.Local.sRet.Declare
+v.Local.fBox.Declare
+v.Local.fOrdQty.Declare
+v.Local.fFulQty.Declare
+v.Local.fBom1.Declare
+v.Local.fBom2.Declare
+v.Local.fSqrFt.Declare
+v.Local.fMult.Declare
+v.Local.sJobPart.Declare
+v.Local.sFilter.Declare
+v.Local.iCnt.Declare
+
+v.Local.fPOsqrFt.Declare
+v.Local.fCurSqrFt.Declare
+v.Local.fTmpSqrFt.Declare
+v.Local.sBlank.Declare("String", "")
+v.Local.sJobList.Declare
+V.Local.bCheckDecimal.Declare
+v.Local.fBoxMax.Declare
+v.Local.fCurBoxMax.Declare
+v.Local.sMaxBoxTest.Declare
+v.Local.sPartList.Declare
+v.Local.sMsg.Declare
+f.Intrinsic.Control.Try
+	'Set Vars.
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	v.Local.sPart.Set(v.Screen.Form!txtPart.Text)
+	f.Intrinsic.String.UCase(v.Local.sPart, v.Local.sPart)
+	
+	v.Local.fNumPcs.Set(v.Screen.Form!txtNumPcs.Text)
+	v.Local.fBox.Set(v.Screen.Form!txtBoxNo.Text)
+	v.Local.fPOsqrFt.Set(v.Screen.Form!txtSqftOrdered.Text)
+	v.Local.fCurSqrFt.Set(v.Screen.Form!txtSqftRemaining.Text)
+	
+	f.Intrinsic.Control.If(v.Local.sPO.Trim, = , "")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Local.sPOLine.Trim, = , "")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+	
+	f.Intrinsic.Control.If(v.Local.sPart.Trim, = , "")
+		gui.Form.txtPart.SetFocus
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Screen.Form!txtNumPcs.Text, = , "")
+		'gui.Form.txtNumPcs.Text("0")
+		'v.Local.fNumPcs.Set(0)
+		gui.Form.txtNumPcs.SetFocus
+		f.Intrinsic.UI.Msgbox("Please enter a number of pieces.")
+		gui.Form.txtNumPcs.SetFocus
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Check Decimal 
+	f.Intrinsic.String.IsInString(v.Screen.Form!txtNumPcs.Text, ".", True, v.Local.bCheckDecimal)
+	f.Intrinsic.Control.If(v.Local.bCheckDecimal)
+		gui.Form.txtNumPcs.SetFocus
+		f.Intrinsic.UI.Msgbox("Decimals not allowed.")
+		gui.Form.txtNumPcs.Text("")
+		gui.Form.txtNumPcs.SetFocus
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Screen.Form!txtBoxNo.Text, = , "")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	gui.Form.txtPart.Text(v.Local.sBlank)
+	'Get SQRFT
+	'f.ODBC.Connection!con.OpenCompanyConnection
+	 	'Get memos
+	 	f.Intrinsic.String.Build("Select Cast(if(Memo_1 = '', 0, Memo_1) as Float) as Memo_1 from BOM_ENG where Part = '{0}'", v.Local.sPart, v.Local.sSQL)
+	 	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fBom1)
+	 	f.Intrinsic.String.Build("Select Cast(if(Memo_2 = '', 0, Memo_2) as Float) as Memo_2 from BOM_ENG where Part = '{0}'", v.Local.sPart, v.Local.sSQL)
+	 	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fBom2)
+	 	'Calc SQRFT Multiplier
+	 	f.Intrinsic.Math.Mult(v.Local.fBom1, v.Local.fBom2, v.Local.fMult)
+	 	f.Intrinsic.Math.Div(v.Local.fMult, 144, v.Local.fMult)
+	'f.ODBC.Connection!con.Close
+	'Check mode
+	f.Intrinsic.Control.BlockEvents
+	f.Intrinsic.UI.InvokeWaitDialog("Saving")
+	f.Intrinsic.Control.If(v.Global.bEditMode)
+		f.Intrinsic.Control.If(v.Local.fNumPcs, <=, v.Global.iQty)
+			f.Intrinsic.Math.Mult(v.Local.fMult, v.Local.fNumPcs, v.Local.fSqrFt)
+			f.Intrinsic.Math.Round(v.Local.fSqrFt, 2, v.Local.fSqrFt)
+			'Update
+			'f.ODBC.Connection!con.OpenCompanyConnection
+				f.Intrinsic.Control.If(v.Local.fNumPcs, =, 0)
+					'Check this is the highest Box number for that part.
+					f.Intrinsic.String.Build("Select max(BoxNum) from GCG_6655_PART_BOX Where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+					f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fBoxMax)
+					f.Intrinsic.String.Build("Select max(BoxNum) from GCG_6655_PART_BOX Where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+					f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fCurBoxMax)
+					
+					f.Intrinsic.Control.If(v.Local.fBox, <, v.Local.fCurBoxMax)
+						f.Intrinsic.String.Build("Select * from  GCG_6655_PART_BOX where Part <> '{0}' and PO_Number = '{2}' and PO_Line = '{3}' and BoxNum = '{1}'", v.Local.sPart, v.Local.fBox, v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+						f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sMaxBoxTest)
+						
+						f.Intrinsic.Control.If(v.Local.sMaxBoxTest.Trim, =, "")
+							f.Intrinsic.UI.CloseWaitDialog
+							f.Intrinsic.UI.Msgbox("Deleting this part will leave a Box Empty that is not the highest number.")
+						f.Intrinsic.Control.Else
+							f.Intrinsic.Control.If(v.Local.fBox, =, v.Local.fBoxMax)
+								f.Intrinsic.String.Build("Delete From GCG_6655_PART_BOX Where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}' and BoxNum = '{3}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.fBox, v.Local.sSQL)
+								f.ODBC.Connection!con.Execute(v.Local.sSQL)
+							f.Intrinsic.Control.Else
+								f.Intrinsic.UI.CloseWaitDialog
+								f.Intrinsic.UI.Msgbox("You can only delete a Part on the Highest Box Number for that part.")
+							f.Intrinsic.Control.EndIf
+						f.Intrinsic.Control.EndIf
+					f.Intrinsic.Control.Else
+						f.Intrinsic.String.Build("Delete From GCG_6655_PART_BOX Where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}' and BoxNum = '{3}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.fBox, v.Local.sSQL)
+						f.ODBC.Connection!con.Execute(v.Local.sSQL)
+					f.Intrinsic.Control.EndIf					
+				f.Intrinsic.Control.Else
+					f.Intrinsic.String.Build("Update GCG_6655_PART_BOX Set NumPcs = '{2}', Sqr_Ft = '{5}' where Part = '{0}' and PO_Number = '{3}' and PO_Line = '{4}' and BoxNum = '{1}'", v.Local.sPart, v.Local.fBox, v.Local.fNumPcs, v.Local.sPO, v.Local.sPOLine, v.Local.fSqrFt, v.Local.sSQL)
+					f.ODBC.Connection!con.Execute(v.Local.sSQL)
+				f.Intrinsic.Control.EndIf
+				
+				f.Intrinsic.String.Build("Select distinct Job+Suffix from GCG_6655_PO_JOB where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+				f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+				f.Intrinsic.String.Replace(v.Local.sRet, "#$#", "','", v.Local.sRet)
+				v.Local.sJobList.Set(v.Local.sRet)
+			'f.ODBC.Connection!con.Close
+			'Reset Fields
+			f.Intrinsic.Control.BlockEvents
+				gui.Form.txtPart.Enabled(True)			
+				gui.Form.txtNumPcs.Enabled(False)
+				v.Global.bEditMode.Set(False)
+				gui.Form.txtNumPcs.Text("1")
+				gui.Form.txtPart.Text("")
+	
+				gui.Form.cmdPartBrw.Enabled(True)
+				gui.Form.cmdSave.Enabled(True)
+				gui.Form.cmdDelete.Enabled(True)
+				gui.Form.cmdEdit.Enabled(True)
+				gui.Form.cmdPrint.Enabled(True)
+				gui.Form.txtBoxNo.Enabled(True)
+				gui.Form.cmdBack.Enabled(True)
+				gui.Form.cmdForward.Enabled(True)
+			f.Intrinsic.Control.UnBlockEvents
+			'Refresh
+			f.Intrinsic.Control.Label("Refresh")
+			'f.ODBC.Connection!con.OpenCompanyConnection
+				f.Intrinsic.String.Build("Select * from GCG_6655_PART_BOX where PO_Number = '{0}'  and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+				f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+				f.Data.Datatable.DeleteRow("displayDT")
+				f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+				'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+				f.Data.Datatable.Close("tmpdDT")
+				f.Data.Datatable.AcceptChanges("displayDT")
+				'Dict
+				f.Intrinsic.String.Build("Select Part, Sum(qty_order) from V_Job_Header where Job+Suffix in ('{0}') group by Part", v.Local.sJobList, v.Local.sSQL)
+				f.Data.Dictionary.CreateFromSQL("qtyDict", "con", v.Local.sSQL)
+				f.Data.Dictionary.SetDefaultReturn("qtyDict", 0)
+				f.Data.Datatable.FillFromDictionary("displayDT", "qtyDict", "Part", "WOQty")
+				f.Data.Dictionary.Close("qtyDict")
+				f.Data.Datatable.AcceptChanges("displayDT")
+				'Get Part List
+				f.Data.DataView.ToString("displayDT", "displayDV", "Part", "*!*", "','", v.Local.sPartList)
+				f.Intrinsic.String.Build("Select Part, Sum(qty_order) as WOQty from V_Job_Header where Job+Suffix in ('{0}') and Part not in ('{1}') and date_closed = '1900-01-01' group by Part", v.Local.sJobList, v.Local.sPartList, v.Local.sSQL)
+				f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+				f.Data.Datatable.AddColumn("tmpdDT", "Po_Number", "String", v.Local.sPO)
+				f.Data.Datatable.AddColumn("tmpdDT", "PO_Line", "String", v.Local.sPOLine)
+				f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+				'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+				f.Data.Datatable.Close("tmpdDT")
+				f.Data.Datatable.AcceptChanges("displayDT")
+			'f.ODBC.Connection!con.Close
+			'Set Focus
+			gui.Form.txtPart.SetFocus
+		f.Intrinsic.Control.Else
+			f.Intrinsic.Control.BlockEvents
+				f.Intrinsic.UI.CloseWaitDialog
+				gui.Form.txtPart.Text(v.Local.sPart)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("Quantity must be lower than original quantity for this box.")
+				gui.Form.txtNumPcs.SetFocus
+			f.Intrinsic.Control.UnBlockEvents
+			f.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf		
+	f.Intrinsic.Control.Else
+	'Save
+'		'Check if Parts Match
+'		'f.ODBC.Connection!con.OpenCompanyConnection
+'			f.Intrinsic.String.Build("Select Part from V_JOB_HEADER where Job in '{0}' and Part = '{1}'", v.Local.sJob, v.Local.sPart, v.Local.sSQL)
+'			f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+'		'f.ODBC.Connection!con.Close
+'		f.Intrinsic.Control.If(v.Local.sRet.Trim, =, "")
+'			f.Intrinsic.UI.Msgbox("This Part does not match a Work Order for this Purchase Order.")
+'			gui.Form.txtPart.SetFocus
+'			f.Intrinsic.Control.GoTo("Refresh")
+'		f.Intrinsic.Control.EndIf
+		'Get Ordered Qty
+		'f.ODBC.Connection!con.OpenCompanyConnection
+		
+		f.Intrinsic.String.UCase(v.Local.sPart, v.Local.sPart)
+			f.Intrinsic.String.Build("Select distinct Job+Suffix from GCG_6655_PO_JOB where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+			f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+			f.Intrinsic.String.Replace(v.Local.sRet, "#$#", "','", v.Local.sRet)
+			f.Intrinsic.String.Build("Select distinct job, suffix, qty_order, Part from V_Job_Header where Job+Suffix in ('{0}') and Part = '{1}'", v.Local.sRet, v.Local.sPart, v.Local.sSQL)
+			f.Data.Datatable.CreateFromSQL("qtyDT", "con", v.Local.sSQL)
+			v.Local.sJobList.Set(v.Local.sRet)
+		'f.ODBC.Connection!con.Close		
+		f.Data.Datatable.Compute("qtyDT", "Sum(qty_order)", "", v.Local.fOrdQty)
+		v.Local.fJobQty.Set(v.Local.fOrdQty)
+		f.Intrinsic.String.Build("Part = '{0}'", v.Local.sPart, v.Local.sFilter)
+		f.Data.DataView.Create("qtyDT", "qtyDV", 22, v.Local.sFilter, "")
+		f.Intrinsic.Control.If(v.DataView.qtyDT!qtyDV.RowCount, =, 0)
+			f.Data.DataView.Close("qtyDT", "qtyDV")
+			f.Data.Datatable.Close("qtyDT")
+			f.Intrinsic.String.Build("This Part: {0}, does not match a Work Order for this Purchase Order.", v.Local.sPart, v.Local.sMsg)
+			f.Intrinsic.UI.CloseWaitDialog
+			f.Intrinsic.UI.Msgbox(v.Local.sMsg)
+			gui.Form.txtPart.SetFocus
+			f.Intrinsic.Control.GoTo("Refresh")
+		f.Intrinsic.Control.EndIf
+		f.Data.DataView.Close("qtyDT", "qtyDV")
+		f.Data.Datatable.Close("qtyDT")
+		'Convert to SQFT
+		f.Intrinsic.Math.Mult(v.Local.fNumPcs, v.Local.fMult, v.Local.fSqrFt)
+			'f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fOrdQty)
+		
+		'Get Job
+		'f.ODBC.Connection!con.OpenCompanyConnection
+			f.Intrinsic.String.Build("Select NumPcs from GCG_6655_PART_BOX where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}' and BoxNum = '{3}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.fBox, v.Local.sSQL)
+			f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+			
+			f.Intrinsic.String.Build("Select sum(NumPcs) from GCG_6655_PART_BOX where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+			f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fNumPcsTotal)
+			f.Intrinsic.Math.Add(v.Local.fNumPcsTotal, v.Local.fNumPcs, v.Local.fNumPcsTotal)
+		'f.ODBC.Connection!con.Close
+		f.Intrinsic.Control.If(v.Local.sRet.Trim, =, "")	
+			'Validate QTY
+			f.Intrinsic.Control.If(v.Local.fNumPcs, >, v.Local.fOrdQty)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("You have reached the total ordered qty for this part.")
+				gui.Form.txtPart.SetFocus
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.Control.If(v.Local.fNumPcsTotal, >, v.Local.fJobQty)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("You have reach the total ordered qty for this part.")
+				gui.Form.txtPart.SetFocus
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			
+			'Check total SQR
+			'Get Current
+			f.Intrinsic.Math.Sub(v.Local.fPOsqrFt, v.Local.fCurSqrFt, v.Local.fCurSqrFt)
+			f.Intrinsic.Math.Add(v.Local.fCurSqrFt, v.Local.fSqrFt, v.Local.fCurSqrFt)
+			f.Intrinsic.Math.Add(v.Local.fPOsqrFt, 1, v.Local.fPOsqrFt)
+			f.Intrinsic.Control.If(v.Local.fCurSqrFt, >=, v.Local.fPOsqrFt)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("Square Footage would go Over the Quantity Ordered.")
+				'f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			f.Intrinsic.Math.Round(v.Local.fSqrFt, 2, v.Local.fSqrFt)
+			'Insert neew line.
+			'f.ODBC.Connection!con.OpenCompanyConnection
+				f.Intrinsic.String.Build("Insert into  GCG_6655_PART_BOX (Part, BoxNum, NumPcs, PO_Number, PO_Line, Sqr_Ft) Values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", v.Local.sPart, v.Local.fBox, v.Local.fNumPcs, v.Local.sPO, v.Local.sPOLine, v.Local.fSqrFt, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			'f.ODBC.Connection!con.Close
+			f.Intrinsic.UI.CloseWaitDialog
+			f.Intrinsic.Control.GoTo("Refresh")
+		f.Intrinsic.Control.EndIf
+		'Update if Numeric
+		f.Intrinsic.Control.If(v.Local.sRet.IsNumeric)
+			'Add 1 for the new qty
+			v.Local.fNumSQL.Set(v.Local.sRet)
+			'Convert to SQFT
+			f.Intrinsic.Math.Mult(v.Local.fNumPcs, v.Local.fMult, v.Local.fSqrFt)
+			'f.Intrinsic.Math.Add(v.Local.fNumPcs, v.Local.fNumPcsTotal, v.Local.fNumPcsTotal)
+			f.Intrinsic.Math.Add(v.Local.fNumPcs, v.Local.fNumSQL, v.Local.fNumPcs)
+			
+'			'Get total qty
+'			'f.ODBC.Connection!con.OpenCompanyConnection
+'				f.Intrinsic.String.Build("Select sum(NumPcs) from GCG_6655_PART_BOX where Part = '{0}' and PO_Number = '{1}' and PO_Line = '{2}'", v.Local.sPart, v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+'				f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+'				'Add 1 for the new qty
+'				v.Local.fOrdQty.Set(v.Local.sRet)
+'				f.Intrinsic.Math.Add(v.Local.fOrdQty, v.Local.fNumPcs, v.Local.fOrdQty)
+'			'f.ODBC.Connection!con.Close
+			'Validate QTY
+			f.Intrinsic.Control.If(v.Local.fNumPcsTotal, >, v.Local.fJobQty)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("You have reach the total ordered qty for this part.")
+				gui.Form.txtPart.SetFocus
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			'Validate QTY
+'			f.Intrinsic.Control.If(v.Local.fNumPcs, >, v.Local.fOrdQty)
+'				f.Intrinsic.UI.CloseWaitDialog
+'				f.Intrinsic.UI.Msgbox("You have reach the total ordered qty for this part.")
+'				gui.Form.txtPart.SetFocus
+'				f.Intrinsic.Control.GoTo("Refresh")
+'			f.Intrinsic.Control.EndIf
+			'Validate QTY
+			f.Intrinsic.Control.If(v.Local.fNumPcs, >, v.Local.fJobQty)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("You have reach the total required qty for this part.")
+				gui.Form.txtPart.SetFocus
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			'Check total SQR
+			'Get Current
+			f.Intrinsic.Math.Sub(v.Local.fPOsqrFt, v.Local.fCurSqrFt, v.Local.fCurSqrFt)
+			f.Intrinsic.Math.Add(v.Local.fCurSqrFt, v.Local.fSqrFt, v.Local.fCurSqrFt)
+			f.Intrinsic.Math.Add(v.Local.fPOsqrFt, 1, v.Local.fPOsqrFt)
+			f.Intrinsic.Control.If(v.Local.fCurSqrFt, >=, v.Local.fPOsqrFt)
+				f.Intrinsic.UI.CloseWaitDialog
+				f.Intrinsic.UI.Msgbox("Square Footage would go Over the Quantity Ordered.")
+				f.Intrinsic.Control.GoTo("Refresh")
+			f.Intrinsic.Control.EndIf
+			'Convert to SQFT
+			f.Intrinsic.Math.Mult(v.Local.fNumPcs, v.Local.fMult, v.Local.fSqrFt)
+			'Update QTy
+			'f.ODBC.Connection!con.OpenCompanyConnection
+				f.Intrinsic.String.Build("Update GCG_6655_PART_BOX Set NumPcs = '{2}', Sqr_Ft = '{5}'  where Part = '{0}' and PO_Number = '{3}' and PO_Line = '{4}' and BoxNum = '{1}'", v.Local.sPart, v.Local.fBox, v.Local.fNumPcs, v.Local.sPO, v.Local.sPOLine, v.Local.fSqrFt, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			'f.ODBC.Connection!con.Close
+			f.Intrinsic.Control.GoTo("Refresh")
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	'Refresh
+	f.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.Label("Refresh")
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select * from GCG_6655_PART_BOX where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+		f.Data.Datatable.DeleteRow("displayDT")
+		f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+		f.Data.Datatable.Close("tmpdDT")
+		'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		'Dict
+		f.Intrinsic.String.Build("Select Part, Sum(qty_order) from V_Job_Header where Job+Suffix in ('{0}') group by Part", v.Local.sJobList, v.Local.sSQL)
+		f.Data.Dictionary.CreateFromSQL("qtyDict", "con", v.Local.sSQL)
+		f.Data.Dictionary.SetDefaultReturn("qtyDict", 0)
+		f.Data.Datatable.FillFromDictionary("displayDT", "qtyDict", "Part", "WOQty")
+		f.Data.Dictionary.Close("qtyDict")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		
+		'Get Part List
+		f.Data.DataView.ToString("displayDT", "displayDV", "Part", "*!*", "','", v.Local.sPartList)
+		f.Intrinsic.String.Build("Select Part, Sum(qty_order) as WOQty from V_Job_Header where Job+Suffix in ('{0}') and Part not in ('{1}') and date_closed = '1900-01-01' group by Part", v.Local.sJobList, v.Local.sPartList, v.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+		f.Data.Datatable.AddColumn("tmpdDT", "Po_Number", "String", v.Local.sPO)
+		f.Data.Datatable.AddColumn("tmpdDT", "PO_Line", "String", v.Local.sPOLine)
+		f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+		'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+		f.Data.Datatable.Close("tmpdDT")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		'loop Though the Lines and get QTY Order.
+	'f.ODBC.Connection!con.Close
+	'Update Cur SwrFt
+	v.Local.fPOsqrFt.Set(v.Screen.Form!txtSqftOrdered.Text)
+	f.Data.Datatable.Compute("displayDT", "Sum(Sqr_Ft)", "", v.Local.fTmpSqrFt)
+	f.Intrinsic.Math.Sub(v.Local.fPOsqrFt, v.Local.fTmpSqrFt, v.Local.fTmpSqrFt)
+	f.Intrinsic.Math.Round(v.Local.fTmpSqrFt, 2, v.Local.fTmpSqrFt)
+	gui.Form.txtSqftRemaining.Text(v.Local.fTmpSqrFt)
+	gui.Form.txtNumPcs.Locked(True)
+	'Set Focus
+	
+	'gui.Form.txtBoxNo.cl
+	'f.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.UnBlockEvents
+	gui.Form.txtPart.SetFocus	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.CloseWaitDialog
+	gui.Form.txtPart.SetFocus
+	f.Intrinsic.Control.UnBlockEvents
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdSave_GotFocus.End
+
+Program.Sub.txtPart_Change.Start
+f.Intrinsic.Control.Try	
+	'gui.Form.txtPart.SelectAll
+	f.Intrinsic.Control.If(v.Global.bEditMode)
+	f.Intrinsic.Control.Else
+		gui.Form.cmdSave.SetFocus
+	f.Intrinsic.Control.EndIf	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.txtPart_Change.End
+
+Program.Sub.loadBoxes.Start
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sSQL.Declare
+v.Local.sPart.Declare
+v.Local.fQty.Declare
+v.Local.fPOsqrFt.Declare
+v.Local.fTmpSqrFt.Declare
+v.Local.sRet.Declare
+v.Local.sPartList.Declare
+f.Intrinsic.Control.Try
+	'Get Screen variables.
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+	'Check they are not empty
+	f.Intrinsic.Control.If(v.Local.sPO.Trim, =, "")
+		f.Intrinsic.UI.Msgbox("Please select a PO")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Local.sPOLine.Trim, =, "")
+		f.Intrinsic.UI.Msgbox("Please select a PO")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	'Get Boxes
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select distinct Job+Suffix from GCG_6655_PO_JOB where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+		f.Intrinsic.String.Replace(v.Local.sRet, "#$#", "','", v.Local.sRet)
+		'Dict
+		f.Intrinsic.String.Build("Select Part, Sum(qty_order) from V_Job_Header where Job+Suffix in ('{0}') group by Part", v.Local.sRet, v.Local.sSQL)
+		f.Data.Dictionary.CreateFromSQL("qtyDict", "con", v.Local.sSQL)
+		f.Data.Dictionary.SetDefaultReturn("qtyDict", 0)
+			
+		'f.Intrinsic.String.Build("Select * from GCG_6655_PART_BOX where PO_Number = '{0}'", v.Local.sPO, v.Local.sSQL)
+		f.Intrinsic.String.Build("Select * from GCG_6655_PART_BOX where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+		f.Data.Datatable.DeleteRow("displayDT")
+		f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+		f.Data.Datatable.Close("tmpdDT")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		f.Data.Datatable.FillFromDictionary("displayDT", "qtyDict", "Part", "WOQty")
+		f.Data.Dictionary.Close("qtyDict")
+		'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		'Get Part List
+		f.Data.DataView.ToString("displayDT", "displayDV", "Part", "*!*", "','", v.Local.sPartList)
+		f.Intrinsic.String.Build("Select Part, Sum(qty_order) as WOQty from V_Job_Header where Job+Suffix in ('{0}') and Part not in ('{1}') and date_closed = '1900-01-01' group by Part", v.Local.sRet, v.Local.sPartList, v.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+		f.Data.Datatable.AddColumn("tmpdDT", "Po_Number", "String", v.Local.sPO)
+		f.Data.Datatable.AddColumn("tmpdDT", "PO_Line", "String", v.Local.sPOLine)
+		f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+		f.Data.Datatable.Close("tmpdDT")
+		'f.Data.Datatable.SetValueFormat("displayDT", -1, "Po_Line", "PO_LineNew", "###")
+		f.Data.Datatable.AcceptChanges("displayDT")
+		'Get PO Qty
+		f.Intrinsic.String.Build("Select Qty_Order from V_PO_LINES where Purchase_Order = '{0}' and Record_No = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.fQty)
+		gui.Form.txtSqftOrdered.Text(v.Local.fQty)
+		
+		
+	'f.ODBC.Connection!con.Close
+	
+	'Update Cur SwrFt
+	v.Local.fPOsqrFt.Set(v.Screen.Form!txtSqftOrdered.Text)
+	f.Data.Datatable.Compute("displayDT", "Sum(Sqr_Ft)", "", v.Local.fTmpSqrFt)
+	f.Intrinsic.Math.Sub(v.Local.fPOsqrFt, v.Local.fTmpSqrFt, v.Local.fTmpSqrFt)
+	gui.Form.txtSqftRemaining.Text(v.Local.fTmpSqrFt)
+	
+	f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+	f.Intrinsic.String.Left(v.Local.sPOLine, 3, v.Local.sPOLine)
+	gui.Form.txtPoLine.Text(v.Local.sPOLine)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.loadBoxes.End
+
+Program.Sub.cmdDelete_Click.Start
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sSQL.Declare
+v.Local.sRet.Declare
+v.Local.iYes.Declare
+f.Intrinsic.Control.Try
+	'Get Screen variables.
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	'Browser for Boxes
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select Part, BoxNum from GCG_6655_PART_BOX where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.Intrinsic.UI.Browser("Select a Box", "con", v.Local.sSQL, "Part*!*Box Number", "120*!*50", v.Local.sRet)
+		'Check if Cancel or split
+		f.Intrinsic.Control.If(v.Local.sRet, <>, "***CANCEL***")
+			f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+			'Confirmation
+			f.Intrinsic.String.Build("Do you wish to delete Part: {0} in the Box: {1}", v.Local.sRet(0), v.Local.sRet(1), v.Local.sSQL)
+			f.Intrinsic.UI.Msgbox(v.Local.sSQL, "Confirmation", 4, v.Local.iYes)
+			'Delete
+			f.Intrinsic.Control.If(v.Local.iYes, =, 6)
+				f.Intrinsic.String.Build("Delete From GCG_6655_PART_BOX Where Part = '{0}' and BoxNum = '{1}' and PO_Number = '{2}' and PO_Line = '{3}'", v.Local.sRet(0), v.Local.sRet(1), v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	'f.ODBC.Connection!con.Close
+	'Refresh
+	f.Intrinsic.Control.Label("Refresh")
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select * from GCG_6655_PART_BOX where PO_Number = '{0}'  and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.Data.Datatable.CreateFromSQL("tmpdDT", "con", v.Local.sSQL)
+		f.Data.Datatable.DeleteRow("displayDT")
+		f.Data.Datatable.Merge("tmpdDT", "displayDT", false, 2)
+		f.Data.Datatable.Close("tmpdDT")
+		f.Data.Datatable.AcceptChanges("displayDT")
+	'f.ODBC.Connection!con.Close
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdDelete_Click.End
+
+Program.Sub.cmdEdit_Click.Start
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sSQL.Declare
+v.Local.sRet.Declare
+v.Local.iYes.Declare
+f.Intrinsic.Control.Try
+	'Get Screen variables.
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+	'Browser for Boxes
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select Part, BoxNum, NumPcs from GCG_6655_PART_BOX where PO_Number = '{0}' and PO_Line = '{1}'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+		f.Intrinsic.UI.Browser("Select a Box", "con", v.Local.sSQL, "Part*!*Box Number*!*Number Pcs", "120*!*50*!*50", v.Local.sRet)
+	'f.ODBC.Connection!con.Close
+		'Check if Cancel or split
+		f.Intrinsic.Control.If(v.Local.sRet, <>, "***CANCEL***")
+			f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+			'Set Variables
+			gui.Form.txtBoxNo.Text(v.Local.sRet(1))
+			gui.Form.txtNumPcs.Text(v.Local.sRet(2))
+			v.Global.iQty.Set(v.Local.sRet(2))
+			v.Global.bEditMode.Set(True)
+			'Reset Fields
+			f.Intrinsic.Control.BlockEvents
+				gui.Form.txtPart.Enabled(False)		
+				gui.Form.txtPart.Text(v.Local.sRet(0))
+				gui.Form.txtNumPcs.Enabled(True)
+				gui.Form.txtNumPcs.Locked(False)
+				gui.Form.cmdPartBrw.Enabled(False)
+				gui.Form.cmdSave.Enabled(True)
+				gui.Form.cmdDelete.Enabled(False)
+				gui.Form.cmdEdit.Enabled(False)
+				gui.Form.cmdPrint.Enabled(False)
+				gui.Form.txtBoxNo.Enabled(False)
+				gui.Form.cmdBack.Enabled(False)
+				gui.Form.cmdForward.Enabled(False)
+			f.Intrinsic.Control.UnBlockEvents			
+		f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.UnBlockEvents
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdEdit_Click.End
+
+Program.Sub.cmdPrint_Click.Start
+V.Local.iRunID.Declare(Long,0)
+V.Local.iLogID.Declare(Long,0)
+V.Local.iRPTID.Declare(Long,0)
+V.Local.sParams.Declare(String,"")
+V.Local.sValues.Declare(String,"")
+V.Local.iRet.Declare(Long,0)
+v.Local.sLogo.Declare
+v.Local.sPO.Declare
+f.Intrinsic.Control.Try
+	'Set PO
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	'Get Logo
+	'f.ODBC.Connection!con.OpenCompanyConnection
+		f.ODBC.Connection!con.ExecuteAndReturn("Select Text1 from OP_HEADER where ID = '401046'", v.Local.sLogo)
+	'f.ODBC.Connection!con.Close
+	'Set Params.
+	V.Local.sParams.Set("PO*!*Logo")
+	f.Intrinsic.String.Build("{0}*!*{1}", v.Local.sPO, v.Local.sLogo, V.Local.sValues)
+	'Print
+	f.Global.BI.GetIDFromName("GCG_6655_Packing_List.rpt",V.Local.iRPTID)
+	f.Global.BI.GetRunID(V.Local.iRunID)
+	f.Global.BI.StartLogging(V.Local.iRunID,V.Local.iRPTID,-1,"",V.Local.iLogID)
+	f.Global.BI.StopLogging(V.Local.iLogID)
+	'Print
+	F.Global.BI.RunReportPreProcessor(V.Local.iRunID,V.Local.iLogID,V.Local.sParams,V.Local.sValues,"",-1,True,"",-1,"",-1,"","",V.Local.iRet)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdPrint_Click.End
+
+Program.Sub.cmdPartBrw_Click.Start
+v.Local.sRet.Declare
+f.Intrinsic.Control.Try
+	'Browser
+	f.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	f.Intrinsic.UI.Browser(105, "", v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim, <>, "***CANCEL***")
+		f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+		gui.Form.txtPart.Text(v.Local.sRet(0))
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdPartBrw_Click.End
+
+Program.Sub.cmdPOBack_Click.Start
+v.Local.iPOLineNum.Declare
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sSQL.Declare
+v.Local.sRet.Declare
+f.Intrinsic.Control.Try
+	'Get Var
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	f.Intrinsic.Control.If(v.Local.sPO.Trim, =, "")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	'Get PO Line
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	f.Intrinsic.Control.If(v.Local.sPOLine.IsNumeric)
+		v.Local.iPOLineNum.Set(v.Local.sPOLine)
+		'Add
+		f.Intrinsic.Math.Add(v.Local.iPOLineNum, -1, v.Local.iPOLineNum)
+		'Format
+		f.Intrinsic.String.LPad(v.Local.iPOLineNum, "0", 3, v.Local.sPOLine)
+		f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+	f.Intrinsic.Control.EndIf
+	
+	'f.ODBC.Connection!con.OpenCompanyConnection
+	 	f.Intrinsic.String.Build("Select Job, Suffix, Purchase_Order, Record_no, Part from V_PO_Lines where Purchase_Order = '{0}' and Record_No = '{1}' and Flag_Recv_close <> 'Y'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+	 	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+	'f.ODBC.Connection!con.Close
+	'Check If Empty
+	f.Intrinsic.Control.If(v.Local.sRet.Trim, <>, "")
+		f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+		gui.Form.txtPoNumber.Text(v.Local.sRet(2))
+		gui.Form.txtPoLine.Text(v.Local.sRet(3))
+		'Load Screen.
+		f.Intrinsic.Control.CallSub(loadBoxes)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.UI.Msgbox("Line Not Found.")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdPOBack_Click.End
+
+Program.Sub.cmdPOForward_Click.Start
+v.Local.iPOLineNum.Declare
+v.Local.sPO.Declare
+v.Local.sPOLine.Declare
+v.Local.sSQL.Declare
+v.Local.sRet.Declare
+f.Intrinsic.Control.Try
+	'Get Var
+	v.Local.sPO.Set(v.Screen.Form!txtPoNumber.Text)
+	f.Intrinsic.Control.If(v.Local.sPO.Trim, =, "")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	'Get PO Line
+	v.Local.sPOLine.Set(v.Screen.Form!txtPoLine.Text)
+	f.Intrinsic.Control.If(v.Local.sPOLine.IsNumeric)
+		v.Local.iPOLineNum.Set(v.Local.sPOLine)
+		'Add
+		f.Intrinsic.Math.Add(v.Local.iPOLineNum, 1, v.Local.iPOLineNum)
+		'Format
+		f.Intrinsic.String.LPad(v.Local.iPOLineNum, "0", 3, v.Local.sPOLine)
+		f.Intrinsic.String.RPad(v.Local.sPOLine, "0", 4, v.Local.sPOLine)
+		'Load Screen.
+		f.Intrinsic.Control.CallSub(loadBoxes)
+	f.Intrinsic.Control.EndIf
+	
+	'f.ODBC.Connection!con.OpenCompanyConnection
+	 	f.Intrinsic.String.Build("Select Job, Suffix, Purchase_Order, Record_no, Part from V_PO_Lines where Purchase_Order = '{0}' and Record_No = '{1}' and Flag_Recv_close <> 'Y'", v.Local.sPO, v.Local.sPOLine, v.Local.sSQL)
+	 	f.ODBC.Connection!con.ExecuteAndReturn(v.Local.sSQL, v.Local.sRet)
+	'f.ODBC.Connection!con.Close
+	'Check If Empty
+	f.Intrinsic.Control.If(v.Local.sRet.Trim, <>, "")
+		f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+		gui.Form.txtPoNumber.Text(v.Local.sRet(2))
+		gui.Form.txtPoLine.Text(v.Local.sRet(3))
+		'Load Screen.
+		f.Intrinsic.Control.CallSub(loadBoxes)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.UI.Msgbox("Line Not Found.")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdPOForward_Click.End
+
+Program.Sub.txtPart_KeyPressEnter.Start
+Program.Sub.txtPart_KeyPressEnter.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$aanazco$}$20220620110116345$}$7aQAV3Tor/tR9bkuakHbuzQlHVuXCGOzX/9VFZT/pPKplTwimDh8T4C4mxyojYLqKBjIMZKkEsY=
+Program.Sub.Comments.End
